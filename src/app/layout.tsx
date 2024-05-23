@@ -33,10 +33,10 @@ export default function RootLayout(props: Props) {
             </div>
           </div>
         </Container>
-      </body>
       <footer>
         <Footer/>
       </footer>
+      </body>
       {/* <body >
         
         {children}</body> */}
