@@ -12,7 +12,7 @@ function LeftSection() {
           src="/profile.png"
           width={500}
           height={500}
-          className="rounded-xl  w-11/12 object-cover border-[3px] border-primary p-1 mb-3"
+          className="rounded-full  w-[160px] h-[160px] object-cover border-[3px] border-primary p-1 mb-3 "
           alt="profile"
         />
       <div className="">
