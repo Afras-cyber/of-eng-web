@@ -7,7 +7,7 @@ import WebsiteData from "@/lib/Data/WebsiteData";
 import Image from "next/image";
 function LeftSection() {
   return (
-    <div className="hidden sm:block w-2/12  ">
+    <div className="flex flex-col w-full sm:w-2/12  ">
         <Image
           src="/profile.png"
           width={500}
