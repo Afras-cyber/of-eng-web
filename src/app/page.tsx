@@ -1,0 +1,53 @@
+import Header from "@/components/Header";
+import LeftSection from "@/components/LeftSection";
+import { Container, Typography } from "@mui/material";
+import Image from "next/image";
+import BlogData from "@/lib/Data/BlogData";
+import { BlogDataProps } from "@/typedef";
+export default function Home() {
+  const Card = ({item}:{item:BlogDataProps}) => {
+    return (
+      <div className="flex flex-col sm:flex-row  rounded-lg border-[2px] border-gray-300 hover:opacity-[0.5] cursor-pointer shadow-lg hover:scale-105">
+        <Image
+          src="/ProjectMangement.jpg"
+          width={120}
+          height={120}
+          alt="card image"
+          className="w-full sm:w-2/12 h-24 object-cover"
+        />
+        <div className="px-3 py-2 flex justify-center flex-col">
+          <Typography variant="subtitle1" className="font-title font-bold">
+          {item?.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            className="font-title"
+            component="textPath"
+          >
+            Lemo dfs jfd Lemo dfasd df sdf llkdf Lemo
+          </Typography>
+        </div>
+      </div>
+    );
+  };
+  return (
+    <main className=" ">
+      <Container>
+        <Typography
+          variant="h6"
+          className="font-title font-extrabold text-center sm:text-start"
+        >
+          Unabhängiger Gutachter für Altlasten und Flächenrecycling
+        </Typography>
+        <div className="py-5">
+
+        <div className=" grid grid-row-1 l sm:grid-cols-2 sm:grid-flow-row gap-3">
+          {BlogData.list?.map((item,index) => {
+            return <Card key={index} item={item} />;
+          })}
+        </div>
+        </div>
+      </Container>
+    </main>
+  );
+}
