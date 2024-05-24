@@ -1,12 +1,13 @@
-import Header from "@/components/Header";
-import LeftSection from "@/components/LeftSection";
-import { Container, Typography } from "@mui/material";
+
 import Image from "next/image";
 import BlogData from "@/lib/Data/BlogData";
 import { BlogDataProps } from "@/typedef";
+import Link from "next/link";
+import { Container, Typography } from "@mui/material";
 export default function Home() {
   const Card = ({item}:{item:BlogDataProps}) => {
     return (
+      <Link href={`/blog/${item.title?.split(" ").join("_")}`}>
       <div className="flex flex-col sm:flex-row  rounded-lg border-[2px] border-gray-300 hover:opacity-[0.5] cursor-pointer shadow-lg hover:scale-105">
         <Image
           src="/ProjectMangement.jpg"
@@ -28,6 +29,7 @@ export default function Home() {
           </Typography>
         </div>
       </div>
+      </Link>
     );
   };
   return (

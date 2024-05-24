@@ -7,6 +7,7 @@ import { FaBars } from "react-icons/fa";
 import Drawer from "./Drawer";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Container, Slide } from "@mui/material";
+import Theme from "@/lib/Theme";
 
 interface Props {
   window?: () => Window;
@@ -32,7 +33,7 @@ function Header(props: Props) {
  
   // }, []);
   return (
-    <>
+    <Theme>
       <HideOnScroll {...props}>
         <AppBar
           className={`bg-white text-black font-title ${
@@ -130,7 +131,7 @@ function Header(props: Props) {
           </ul>
         </div>
       </Drawer>
-    </>
+    </Theme>
   );
 }
 
