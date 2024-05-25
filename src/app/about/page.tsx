@@ -34,7 +34,7 @@ function page() {
       side: "left",
       title: "Persönliches",
       image: "/personalize.png",
-      route: "",
+      route: "/about/personal",
     },
   ];
   const ProfileComponents = ({
