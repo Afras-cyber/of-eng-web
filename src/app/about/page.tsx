@@ -10,19 +10,19 @@ function page() {
       side: "left",
       title: "Beruflicher Werdegang",
       image: "/career.png",
-      route: "",
+      route: "/about/career",
     },
     {
       side: "right",
       title: "Fortbildung",
       image: "/training.png",
-      route: "",
+      route: "/about/training",
     },
     {
       side: "left",
       title: "Zertifikate",
-      image: "/study.png",
-      route: "",
+      image: "/certificate.png",
+      route: "/about/certificate",
     },
     {
       side: "right",
@@ -33,7 +33,7 @@ function page() {
     {
       side: "left",
       title: "Persönliches",
-      image: "/study.png",
+      image: "/personalize.png",
       route: "",
     },
   ];
@@ -41,13 +41,15 @@ function page() {
     side,
     title,
     image,
+    route
   }: {
     side: string;
     title: string;
     image: string;
+    route:string;
   }) => {
     return (
-      <Link href="/" className="group">
+      <Link href={route} className="group">
         <div className="flex items-center w-full justify-center">
          {side=="left" && <div className="relative ">
             <div className="absolute top-0 w-24 h-24 rounded-full border-dashed border-2 border-white group-hover:animate-spin"></div>
@@ -97,9 +99,10 @@ function page() {
             return (
               <ProfileComponents
                 key={index}
-                side={item.side}
-                title={item.title}
-                image={item.image}
+                side={item?.side}
+                title={item?.title}
+                image={item?.image}
+                route={item?.route}
               />
             );
           })}

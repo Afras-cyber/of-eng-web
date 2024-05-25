@@ -66,7 +66,7 @@ function Header(props: Props) {
                   </li>
                   <li>
                     <h1>
-                      <Link href="/">Performance</Link>
+                      <Link href="/about">About</Link>
                     </h1>
                   </li>
                   <li>
@@ -74,21 +74,7 @@ function Header(props: Props) {
                       <Link href="/">Projects</Link>
                     </h1>
                   </li>
-                  <li>
-                    <h1>
-                      <Link href="/">Links</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/">Contact Us</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/">About</Link>
-                    </h1>
-                  </li>
+                
                 </ul>
               </div>
             </nav>
@@ -105,7 +91,7 @@ function Header(props: Props) {
             </li>
             <li>
               <h1>
-                <Link href="/">Performance</Link>
+                <Link href="/about">About</Link>
               </h1>
             </li>
             <li>
@@ -113,21 +99,7 @@ function Header(props: Props) {
                 <Link href="/">Projects</Link>
               </h1>
             </li>
-            <li>
-              <h1>
-                <Link href="/">Links</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/">Contact Us</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/">About</Link>
-              </h1>
-            </li>
+          
           </ul>
         </div>
       </Drawer>
