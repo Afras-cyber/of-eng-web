@@ -28,7 +28,7 @@ function page() {
       side: "right",
       title: "Studium",
       image: "/study.png",
-      route: "",
+      route: "/about/study",
     },
     {
       side: "left",

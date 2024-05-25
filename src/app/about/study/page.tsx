@@ -2,11 +2,13 @@ import React from "react";
 import Theme from "@/lib/Theme";
 import { Button, Container, Typography } from "@mui/material";
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import Image from "next/image";
 function page() {
   const CertificateComponents = ()=>{
-    return (    <div className="flex flex-col sm:flex-row items-start gap-1 sm:gap-4 group cursor-pointer shadow-xl rounded-b-2xl py-2 px-4 hover:scale-105 transform duration-400">
+    return (    <div className="flex flex-col sm:flex-row items-start gap-1 sm:gap-4 group cursor-pointer shadow-lg rounded-b-md py-2 px-4 ">
     <div>
-      <Typography variant="body1" className="group-hover:text-primary font-semibold ">
+      <Image src="/m1.png" width={100} height={100} alt="uni logo"/>
+      {/* <Typography variant="body1" className="group-hover:text-primary font-semibold ">
         Sicherheit und Gesundheitsschutz 
       </Typography>
       <Typography variant="body2" className="">
@@ -14,14 +16,19 @@ function page() {
         Bereichen für Bauleiter und Koordinatoren 
         Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
         Bereichen für Bauleiter und Koordinatoren </Typography>
-      <Typography variant="caption" className="">2023/06/05</Typography>
+      <Typography variant="caption" className="">2023/06/05</Typography> */}
     </div>
-    <div className="w-full sm:w-[2px] h-[2px] sm:h-10 bg-primary my-3 "/>
-    <div className="flex flex-row w-full sm:w-fit justify-center items-center gap-3">
-      <FaCloudDownloadAlt className="text-primary text-3xl" />
-      <Button size="small" variant="contained">
-        View  
-      </Button>
+    <div className="w-full sm:w-[2px] h-[2px] sm:h-16 bg-primary my-3 "/>
+    <div className="flex flex-col w-full sm:w-fit  items-start gap-1">
+      <Typography variant="caption" className="">April 2020 - May 2023</Typography> 
+    <Typography variant="body1" className="group-hover:text-primary font-semibold ">
+        Sicherheit und Gesundheitsschutz 
+      </Typography>
+      <Typography variant="body2" className="">
+        Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
+        Bereichen für Bauleiter und Koordinatoren 
+        Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
+        Bereichen für Bauleiter und Koordinatoren </Typography>
     </div>
   </div>)
   }
@@ -33,7 +40,7 @@ function page() {
             variant="h4"
             className=" font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl capitalize"
           >
-            Zertifikate
+          Studium
           </Typography>
           {/* <div className="mb-5">
             <Typography variant="h6" component="h6" className="font-semibold">01.01.99</Typography>
