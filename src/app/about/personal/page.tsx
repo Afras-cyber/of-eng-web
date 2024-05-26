@@ -32,7 +32,7 @@ function page() {
               </Link>
             </div>
             <Typography variant="body2" className="mt-3">
-              Dr. Anna Müller is a distinguished chemical engineer based in
+            {`  Dr. Anna Müller is a distinguished chemical engineer based in
               Germany, renowned for her exceptional talent and comprehensive
               education. With a Ph.D. in Chemical Engineering from the Technical
               University of Munich, Anna has consistently demonstrated her
@@ -43,7 +43,7 @@ function page() {
               published in prestigious journals, and she frequently presents at
               international conferences. Her dedication to excellence and her
               passion for driving technological advancements make her a valuable
-              asset to the field of chemical engineering.
+              asset to the field of chemical engineering.`}
             </Typography>
             <table className="my-3">
               <tbody>
@@ -90,7 +90,7 @@ function page() {
               </tbody>
             </table>
             <Typography variant="body2" className="mt-3">
-              Beyond her professional achievements, Anna is deeply committed to
+             {` Beyond her professional achievements, Anna is deeply committed to
               continuous learning and personal growth. She is an avid reader,
               with a particular interest in scientific literature and historical
               novels. In her spare time, she enjoys conducting independent
@@ -99,7 +99,7 @@ function page() {
               not only enrich her knowledge but also inspire her innovative
               approach to solving engineering challenges. Her blend of academic
               excellence, practical experience, and personal passion truly sets
-              her apart in her field.
+              her apart in her field.`}
             </Typography>
           </div>
           <div className="hidden col-span-4  sm:flex justify-center items-start">

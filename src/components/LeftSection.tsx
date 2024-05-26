@@ -5,9 +5,11 @@ import { IoIosMail } from "react-icons/io";
 import { TbDeviceLandlinePhone } from "react-icons/tb";
 import WebsiteData from "@/lib/Data/WebsiteData";
 import Image from "next/image";
+// import { usePathname } from "next/navigation";
 function LeftSection() {
+  // const navigation = usePathname()
   return (
-    <div className="flex flex-col w-full sm:w-2/12  ">
+    <div className={`flex flex-col w-full sm:w-2/12`}  >
         <Image
           src="/profile.png"
           width={500}

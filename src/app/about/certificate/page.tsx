@@ -10,10 +10,10 @@ function page() {
         Sicherheit und Gesundheitsschutz 
       </Typography>
       <Typography variant="body2" className="">
-        Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
+        {`Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
         Bereichen für Bauleiter und Koordinatoren 
         Sicherheit und Gesundheitsschutz bei Arbeiten in kontaminierten
-        Bereichen für Bauleiter und Koordinatoren </Typography>
+        Bereichen für Bauleiter und Koordinatoren`} </Typography>
       <Typography variant="caption" className="">2023/06/05</Typography>
     </div>
     <div className="w-full sm:w-[2px] h-[2px] sm:h-10 bg-primary my-3 "/>
@@ -44,7 +44,7 @@ function page() {
           </div> */}
       <div className="space-y-4">
         {
-          [1,2,3,4,5].map((item)=><CertificateComponents/>)
+          [1,2,3,4,5].map((item,index)=><CertificateComponents key={index}/>)
         }
       </div>
         </div>

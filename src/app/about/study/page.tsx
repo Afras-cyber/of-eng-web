@@ -28,11 +28,11 @@ function page() {
             variant="body1"
             className="group-hover:text-primary font-semibold "
           >
-            Immatrikulation an der Westfälischen Wilhelms-Universität, Münster
+        {`    Immatrikulation an der Westfälischen Wilhelms-Universität, Münster`}
           </Typography>
           <Typography variant="body2" className="">
-            Hauptfach: Geographie (Landschaftsökologie) Nebenfächer: Geologie,
-            Mineralogie
+        {`    Hauptfach: Geographie (Landschaftsökologie) Nebenfächer: Geologie,
+            Mineralogie`}
           </Typography>
         </div>
       </div>
@@ -56,8 +56,8 @@ function page() {
             </Typography>
           </div> */}
           <div className="space-y-4">
-            {[1, 2, 3, 4, 5].map((item) => (
-              <CertificateComponents />
+            {[1, 2, 3, 4, 5].map((item ,index) => (
+              <CertificateComponents key={index} />
             ))}
           </div>
         </div>

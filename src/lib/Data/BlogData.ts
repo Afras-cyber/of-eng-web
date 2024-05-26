@@ -1,4 +1,4 @@
-export default {
+const BLODDATA = {
   list: [
     {
       title: "Projektmanagement",
@@ -16,4 +16,5 @@ export default {
       title: "Abschätzung der Gefährdung durch Schadstoffe",
     },
   ],
-};
+}
+export default BLODDATA ;
