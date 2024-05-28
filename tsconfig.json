@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/BlogWrapper"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/BlogWrapper", "src/app/project/reference/page.js", "src/app/project/page.js", "src/components/LeftSection.jsx"],
   "exclude": ["node_modules"]
 }

@@ -71,7 +71,7 @@ function Header(props: Props) {
                   </li>
                   <li>
                     <h1>
-                      <Link href="/">Projects</Link>
+                      <Link href="/project">Projects</Link>
                     </h1>
                   </li>
                 
@@ -96,7 +96,7 @@ function Header(props: Props) {
             </li>
             <li>
               <h1>
-                <Link href="/">Projects</Link>
+                <Link href="/project">Projects</Link>
               </h1>
             </li>
           
