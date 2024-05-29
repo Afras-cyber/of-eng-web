@@ -33,7 +33,7 @@ export default function RootLayout(props: Props) {
           >
             <div className="w-full flex flex-col sm:flex-row">
               <LeftSection />
-              <div className="w-full sm:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12">
+              <div className="m-auto w-full sm:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12">
                 {props.children}
               </div>
             </div>

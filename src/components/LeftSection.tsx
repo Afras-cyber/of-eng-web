@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@mui/material";
 import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -5,24 +6,24 @@ import { IoIosMail } from "react-icons/io";
 import { TbDeviceLandlinePhone } from "react-icons/tb";
 import WebsiteData from "@/lib/Data/WebsiteData";
 import Image from "next/image";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 function LeftSection() {
-  // const navigation = usePathname()
+  const navigation = usePathname();
   return (
-    <div className={`flex flex-col w-full sm:w-2/12`}  >
-        <Image
-          src="/profile.png"
-          width={500}
-          height={500}
-          className="rounded-full  w-[160px] h-[160px] object-cover border-[3px] border-primary p-1 mb-3 "
-          alt="profile"
-        />
+    <div
+      className={`flex flex-col ${
+        navigation == "/about/personal" ? "w-0 hidden" : " w-full sm:w-2/12"
+      }`}
+    >
+      <Image
+        src="/profile.png"
+        width={500}
+        height={500}
+        className="rounded-full  w-[160px] h-[160px] object-cover border-[3px] border-primary p-1 mb-3 "
+        alt="profile"
+      />
       <div className="">
-
-        <Typography
-          className="font-title font-bold text-start"
-          variant="body1"
-        >
+        <Typography className="font-title font-bold text-start" variant="body1">
           {WebsiteData.name}
         </Typography>
         <Typography variant="body2" className="font-title text-start">

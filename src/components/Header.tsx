@@ -29,6 +29,32 @@ function Header(props: Props) {
       </Slide>
     );
   }
+  const RoutesList = [
+    {
+      path: "/",
+      title: "Home",
+    },
+    {
+      path: "/about",
+      title: "About",
+    },
+    {
+      path: "/project",
+      title: "Projects",
+    },
+    {
+      path: "/link",
+      title: "Links",
+    },
+    {
+      path: "/contact",
+      title: "Contact",
+    },
+    {
+      path: "/imprint",
+      title: "imprint",
+    },
+  ];
 
   // }, []);
   return (
@@ -58,36 +84,15 @@ function Header(props: Props) {
                   <FaBars />
                 </div>
                 <ul className="hidden sm:flex space-x-3 ">
-                  <li>
-                    <h1>
-                      <Link href="/">Home</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/about">About</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/project">Projects</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/link">Links</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/contact">Contact</Link>
-                    </h1>
-                  </li>
-                  <li>
-                    <h1>
-                      <Link href="/imprint">imprint</Link>
-                    </h1>
-                  </li>
+                  {RoutesList?.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <h1>
+                          <Link href={item.path}>{item.title}</Link>
+                        </h1>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </nav>
@@ -97,36 +102,17 @@ function Header(props: Props) {
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className="flex-1 bg-blue-50">
           <ul className="flex flex-col space-y-3 p-5 ">
-            <li>
-              <h1>
-                <Link href="/">Home</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/about">About</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/project">Projects</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/link">Links</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/contact">Contact</Link>
-              </h1>
-            </li>
-            <li>
-              <h1>
-                <Link href="/imprint">imprint</Link>
-              </h1>
-            </li>
+            {RoutesList?.map((item, index) => {
+              return (
+                <li key={index}>
+                  <h1>
+                    <Link onClick={() => setIsOpen(false)} href={item.path}>
+                      {item.title}
+                    </Link>
+                  </h1>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </Drawer>
