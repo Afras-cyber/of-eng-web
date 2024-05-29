@@ -31,9 +31,9 @@ export default function RootLayout(props: Props) {
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px;",
             }}
           >
-            <div className="w-full flex flex-col sm:flex-row">
+            <div className="w-full flex flex-col lg:flex-row">
               <LeftSection />
-              <div className="m-auto w-full sm:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12">
+              <div className="m-auto w-full lg:w-9/12 xl:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12">
                 {props.children}
               </div>
             </div>

@@ -11,43 +11,45 @@ function LeftSection() {
   const navigation = usePathname();
   return (
     <div
-      className={`flex flex-col ${
-        navigation == "/about/personal" ? "w-0 hidden" : " w-full sm:w-2/12"
+      className={`flex flex-col sm:flex-row lg:flex-col sm:gap-4 lg:gap-0 sm:px-10 sm:py-2 lg:px-0 lg:py-0${
+        navigation == "/about/personal" ? "w-0 hidden" : " w-full lg:w-2/12"
       }`}
     >
       <Image
         src="/profile.png"
         width={500}
         height={500}
-        className="rounded-full  w-[160px] h-[160px] object-cover border-[3px] border-primary p-1 mb-3 "
+        className="rounded-full w-[120px]  h-[120px] object-cover border-[3px] border-primary p-1 mb-3 "
         alt="profile"
       />
-      <div className="">
-        <Typography className="font-title font-bold text-start" variant="body1">
-          {WebsiteData.name}
-        </Typography>
-        <Typography variant="body2" className="font-title text-start">
-          {WebsiteData.address}
-        </Typography>
-      </div>
-      <div className="py-2 pt-4 ">
-        <div className="flex items-center  space-x-1 mb-2">
-          <TbDeviceLandlinePhone className="text-primary" />{" "}
-          <Typography variant="body2" className="font-title ">
-            {WebsiteData.tel}
-          </Typography>{" "}
-        </div>
-        <div className="flex items-center  space-x-1 mb-2">
-          <FaPhoneAlt className="text-primary" />
-          <Typography variant="body2" className="font-title ">
-            {WebsiteData.mobile}
+      <div>
+        <div className="">
+          <Typography className="font-title font-bold text-start text-sm lg:text-base">
+            {WebsiteData.name}
+          </Typography>
+          <Typography className="font-title text-start text-xs lg:text-sm">
+            {WebsiteData.address}
           </Typography>
         </div>
-        <div className="flex items-center  space-x-1 mb-2">
-          <IoIosMail className="text-xl text-primary" />
-          <Typography variant="body2" className="font-title ">
-            {WebsiteData.email}
-          </Typography>{" "}
+        <div className="py-2 pt-4 ">
+          <div className="flex items-center  space-x-1 mb-2">
+            <TbDeviceLandlinePhone className="text-primary" />{" "}
+            <Typography className="font-title text-xs lg:text-sm">
+              {WebsiteData.tel}
+            </Typography>{" "}
+          </div>
+          <div className="flex items-center  space-x-1 mb-2">
+            <FaPhoneAlt className="text-primary" />
+            <Typography className="font-title text-xs lg:text-sm">
+              {WebsiteData.mobile}
+            </Typography>
+          </div>
+          <div className="flex items-center  space-x-1 mb-2">
+            <IoIosMail className="text-xl text-primary" />
+            <Typography className="font-title text-xs lg:text-sm">
+              {WebsiteData.email}
+            </Typography>{" "}
+          </div>
         </div>
       </div>
     </div>
