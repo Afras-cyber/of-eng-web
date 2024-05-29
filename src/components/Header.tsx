@@ -30,7 +30,6 @@ function Header(props: Props) {
     );
   }
 
- 
   // }, []);
   return (
     <Theme>
@@ -74,7 +73,21 @@ function Header(props: Props) {
                       <Link href="/project">Projects</Link>
                     </h1>
                   </li>
-                
+                  <li>
+                    <h1>
+                      <Link href="/link">Links</Link>
+                    </h1>
+                  </li>
+                  <li>
+                    <h1>
+                      <Link href="/contact">Contact</Link>
+                    </h1>
+                  </li>
+                  <li>
+                    <h1>
+                      <Link href="/imprint">imprint</Link>
+                    </h1>
+                  </li>
                 </ul>
               </div>
             </nav>
@@ -99,7 +112,21 @@ function Header(props: Props) {
                 <Link href="/project">Projects</Link>
               </h1>
             </li>
-          
+            <li>
+              <h1>
+                <Link href="/link">Links</Link>
+              </h1>
+            </li>
+            <li>
+              <h1>
+                <Link href="/contact">Contact</Link>
+              </h1>
+            </li>
+            <li>
+              <h1>
+                <Link href="/imprint">imprint</Link>
+              </h1>
+            </li>
           </ul>
         </div>
       </Drawer>

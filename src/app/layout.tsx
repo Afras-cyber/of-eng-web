@@ -5,7 +5,8 @@ import { Container, } from "@mui/material";
 import LeftSection from "@/components/LeftSection";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Theme from "@/lib/Theme";
+import 'react-vertical-timeline-component/style.min.css';
+
 interface Props {
   window?: () => Window;
   children: React.ReactElement;
