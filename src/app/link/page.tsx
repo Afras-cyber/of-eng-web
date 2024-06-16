@@ -15,10 +15,6 @@ function page() {
       description: "Viele und umfassende Informationen zu allen Umweltthemen",
     },
     {
-      url: "http://www.abbruchverband.de",
-      description: "AVN - Abbruch Verband Nord e.V.",
-    },
-    {
       url: "http://www.bgbau.de",
       description: "Berufsgenossenschaft der Bauwirtschaft",
     },
@@ -29,6 +25,10 @@ function page() {
     {
       url: "http://www.laga-online.de",
       description: "Bund-/Länder-Arbeitsgemeinschaft Abfall",
+    },
+    {
+      url: "https://www.gesamtverband-schadstoff.de/",
+      description: "FAS – Fachverband Schadstoffsanierung",
     },
   ];
   const LinkComponents = ({ item }: any) => {
