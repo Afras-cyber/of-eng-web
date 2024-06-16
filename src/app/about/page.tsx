@@ -91,7 +91,7 @@ function page() {
           variant="h4"
           className=" font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl"
         >
-          Personal Journey
+         Zur Person
         </Typography>
 
         <div className="  flex flex-col justify-center">

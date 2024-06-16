@@ -1,10 +1,10 @@
 const WEBSITEDATA={
   website_name: "Oliver Fargeon M.ENG",
-  name: "Diplom-Geograph Jens-Henning Müller",
-  address: "Cloppenburgstraße 38 48145 Münster",
+  name: "M.Eng.Olivier Fargeo",
+  address: "Humboldtstraße 984453 Mühldorf am Inn",
   description: "Discription about Oliver Fargeon M.ENG",
   email: "info@fargeon-consulting.com",
-  mobile: "+49 173 3608805",
-  tel: "+49 251 9730102",
+  mobile: "+49 8631 1849439",
+  tel: "+49 176 60375598",
 }
 export default WEBSITEDATA;

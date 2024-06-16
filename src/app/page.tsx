@@ -7,7 +7,7 @@ import { Container, Typography } from "@mui/material";
 export default function Home() {
   const Card = ({item}:{item:BlogDataProps}) => {
     return (
-      <Link href={`/blog/${item.title?.split(" ").join("_")}`}>
+      <Link href={`/blog/${item.slug}`}>
       <div className="flex flex-col sm:flex-row  rounded-lg border-[2px] border-gray-300 hover:opacity-[0.5] cursor-pointer shadow-lg hover:scale-105 transform duration-400">
         <Image
           src="/ProjectMangement.jpg"
@@ -20,13 +20,7 @@ export default function Home() {
           <Typography variant="subtitle1" className="font-title font-bold">
           {item?.title}
           </Typography>
-          <Typography
-            variant="body2"
-            className="font-title"
-            component="textPath"
-          >
-            Lemo dfs jfd Lemo dfasd df sdf llkdf Lemo
-          </Typography>
+         
         </div>
       </div>
       </Link>
@@ -39,7 +33,7 @@ export default function Home() {
           variant="h6"
           className="font-title font-extrabold text-center sm:text-start"
         >
-          Unabhängiger Gutachter für Altlasten und Flächenrecycling
+          Geschäftsfelder
         </Typography>
         <div className="py-5">
 

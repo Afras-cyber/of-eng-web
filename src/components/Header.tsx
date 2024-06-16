@@ -36,11 +36,19 @@ function Header(props: Props) {
     },
     {
       path: "/about",
-      title: "About",
+      title: "Person",
     },
     {
       path: "/project",
-      title: "Projects",
+      title: "Projekte",
+    },
+    {
+      path: "/download",
+      title: "Downloads",
+    },
+    {
+      path: "/partner",
+      title: "Partner",
     },
     {
       path: "/link",
@@ -48,11 +56,11 @@ function Header(props: Props) {
     },
     {
       path: "/contact",
-      title: "Contact",
+      title: "Kontakt",
     },
     {
       path: "/imprint",
-      title: "imprint",
+      title: "Impressum",
     },
   ];
 

@@ -9,7 +9,7 @@ function page() {
     <Theme>
       <Container maxWidth="md" className="p-0">
         <div className="p-1 sm:p-10">
-          <Typography
+          {/* <Typography
             variant="h4"
             className=" font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl capitalize"
           >
@@ -17,11 +17,11 @@ function page() {
           </Typography>
           <Typography variant="body1" className="mt-3 mb-6">
             {`Dr. Anne ist eine angesehene Chemieingenieurin, die an einer Vielzahl von wegweisenden Projekten arbeitet. Ihre Forschung konzentriert sich auf die Entwicklung nachhaltiger chemischer Prozesse und innovativer Technologien zur Umwandlung von Abfallstoffen in wertvolle Ressourcen. Dr. Anne hat bedeutende Beiträge zur Verbesserung der Effizienz von Katalysatoren geleistet, was zu umweltfreundlicheren und kostengünstigeren Produktionsmethoden in der chemischen Industrie führt. Darüber hinaus engagiert sie sich in der Entwicklung von Materialien für die Energiespeicherung und -umwandlung, einschließlich fortschrittlicher Batterien und Brennstoffzellen. Ihre Arbeiten haben international Anerkennung gefunden und bieten vielversprechende Lösungen für einige der drängendsten Umweltprobleme unserer Zeit.`}
-          </Typography>
+          </Typography> */}
           <div className="">
-            <Typography className="font-bold mb-2" variant="h6">
+            {/* <Typography className="font-bold mb-2" variant="h6">
               Choose :
-            </Typography>
+            </Typography> */}
             <Link href="/project/reference">
               <Typography
                 variant="body1"

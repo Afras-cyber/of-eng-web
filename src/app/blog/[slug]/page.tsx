@@ -1,8 +1,14 @@
+import BLODDATA from "@/lib/Data/BlogData";
 import Theme from "@/lib/Theme";
 import { Container, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+import Gallery from "./gallery";
+function page({ params }: { params: { slug: string } }) {
+  const thisContent = BLODDATA?.list?.filter((x) => x.slug == params?.slug)[0];
 
-function page() {
   return (
     <Theme>
       <Container maxWidth="md" className="p-0">
@@ -11,61 +17,26 @@ function page() {
             variant="h4"
             className=" font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl"
           >
-            Projektmanagement
+            {thisContent?.title}
           </Typography>
 
-          <Typography variant="body1" className="mb-2">
+          {/* <Typography variant="body1" className="mb-2">
             Durchführung sämtlicher Koordinierungs- und Steuerungsleistungen zur
             Durchführung von Altlastenerkundung und -sanierung sowie Rückbau-
             und Flächenrecyclingmaßnahmen von ehemaligen Militärliegenschaften,
             Industriebrachen oder innerstädtischen Freiflächen im Rahmen
             städtebaulicher Entwicklungsmaßnahmen:
-          </Typography>
+          </Typography> */}
           <ul className="list-disc pl-5 sm:pl-10 py-4 space-y-2">
-            <li>
-              <Typography variant="body1">
-                Fachtechnische Begleitung und zielorientierte Planung der
-                Gesamtmaßnahme
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Auswahlentscheidungen über die ökologisch und ökonomisch
-                zweckmäßigsten Untersuchungs-, Sanierungs- und Rückbauverfahren
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Interdisziplinäre Steuerung aller notwendigen Einzelaktivitäten
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Erstellung von Maßnahmen-, Zeit- und Kostenplänen
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Erarbeitung und Abstimmung von Rückbau-, Sanierungs- und
-                Sicherungskonzepten
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Durchführung der erforderlichen Genehmigungs- und
-                Ausführungsplanung in direktem Kontakt mit den entsprechenden
-                Fachbehörden
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                Vorbereitung von Ausschreibungen und Mitwirkung bei der Vergabe
-              </Typography>
-            </li>
+            {thisContent?.content?.map((j, i) => (
+              <li key={i}>
+                <Typography variant="body1">{j.item}</Typography>
+              </li>
+            ))}
           </ul>
+          {thisContent?.images && <Gallery Images={thisContent.images} />}
         </div>
       </Container>
-      
     </Theme>
   );
 }

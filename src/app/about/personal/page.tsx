@@ -18,9 +18,15 @@ function page() {
             className="sm:hidden w-full object-contain rounded-lg shadow-2xl"
           />
         </div>
+        <Typography
+            variant="h4"
+            className=" font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl capitalize"
+          >
+            Persönliches
+          </Typography>
         <div className="grid grid-cols-12 grid-flow-row">
           <div className="col-span-12 sm:col-span-8">
-            <Typography className="text-2xl sm:text-5xl font-bold text-primary">
+            {/* <Typography className="text-2xl sm:text-5xl font-bold text-primary">
               Jens-Henning Müller
             </Typography>
             <div className="flex items-center gap-2">
@@ -44,63 +50,95 @@ function page() {
               international conferences. Her dedication to excellence and her
               passion for driving technological advancements make her a valuable
               asset to the field of chemical engineering.`}
-            </Typography>
+            </Typography> */}
             <table className="my-3">
               <tbody>
                 <tr>
                   <td>
-                    <Typography component="div" variant="body2" className="">
+                    <Typography component="div" variant="body1" className="">
+                      <b>Name</b>
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography
+                      component="div"
+                      variant="body1"
+                      className="pl-3 mb-1"
+                    >
+                      {`Fargeon`}
+                    </Typography>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Typography component="div" variant="body1" className="">
+                      <b>Vorname</b>
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography
+                      component="div"
+                      variant="body1"
+                      className="pl-3 mb-1"
+                    >
+                      {`Olivier`}
+                    </Typography>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Typography component="div" variant="body1" className="">
                       <b>Adresse</b>
                     </Typography>
                   </td>
                   <td>
                     <Typography
                       component="div"
-                      variant="body2"
-                      className="pl-3"
+                      variant="body1"
+                      className="pl-3 mb-1"
                     >
-                      Cloppenburgstraße 38, 48145 Münster
+                      {`Humboldtstraße 9, 84453 Mühldorf am Inn`}
                     </Typography>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <Typography component="div" variant="body2" className="">
+                    <Typography component="div" variant="body1" className="">
                       <b>Geburtsdatum</b>
                     </Typography>
                   </td>
                   <td>
-                    <Typography variant="body2" className="pl-3">
-                      08.07.1967
+                    <Typography variant="body1" className="pl-3 mb-1">
+                      {`13.08.1987`}
                     </Typography>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <Typography variant="body2" className="">
+                    <Typography variant="body1" className="">
                       <b>Familienstand</b>
                     </Typography>
                   </td>
                   <td>
-                    <Typography variant="body2" className="pl-3">
-                      Verheiratet, 1 Kind
+                    <Typography variant="body1" className="pl-3 mb-1">
+                      {`verheiratet, 3 Kinder`}
+                    </Typography>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Typography variant="body1" className="">
+                      <b>Hobbies</b>
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography variant="body1" className="pl-3 mb-1">
+                      {`Sport, aktiv: Fußball, Taekwondo`}
                     </Typography>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <Typography variant="body2" className="mt-3">
-             {` Beyond her professional achievements, Anna is deeply committed to
-              continuous learning and personal growth. She is an avid reader,
-              with a particular interest in scientific literature and historical
-              novels. In her spare time, she enjoys conducting independent
-              research projects, often exploring new methodologies and
-              technologies in the field of chemical engineering. Anna's hobbies
-              not only enrich her knowledge but also inspire her innovative
-              approach to solving engineering challenges. Her blend of academic
-              excellence, practical experience, and personal passion truly sets
-              her apart in her field.`}
-            </Typography>
           </div>
           <div className="hidden col-span-4  sm:flex justify-center items-start">
             <Image
