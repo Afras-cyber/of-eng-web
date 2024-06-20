@@ -28,9 +28,9 @@ function page() {
               className="mb-4 text-left font-title flex justify-start"
               //   component="address"
             >
-              Olivier Fargeon <br />
-              Humboldtstraße 9 <br />
-              84453 Mühldorf am Inn
+              {`Olivier Fargeon`} <br />
+             {` Humboldtstraße 9 `}<br />
+             {` 84453 Mühldorf am Inn`}
             </Typography>
           </div>
           <div className="flex items-center space-x-1">
@@ -80,25 +80,25 @@ function page() {
             Haftungshinweis:
           </Typography>
           <Typography variant="body1" className="p-2">
-            Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
+           {` Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine
             Haftung für die Inhalte externer Links. Für den Inhalt der
             verlinkten Seiten sind ausschließlich deren Betreiber
-            verantwortlich.
+            verantwortlich.`}
           </Typography>
         </div>
         <div>
           <Typography className="font-bold" variant="body1">
-            Erklärung zum Datenschutz:
+            {`Erklärung zum Datenschutz:`}
           </Typography>
           <Typography variant="body1" className="p-2">
-            Personenbezogene Daten: Innerhalb dieser Internetpräsenz besteht die
+        {`    Personenbezogene Daten: Innerhalb dieser Internetpräsenz besteht die
             Möglichkeit, uns personenbezogene Daten zu übermitteln.
             "Personenbezogene Daten" sind Informationen, die genutzt werden
             können, um Ihre Identität zu erfahren. Darunter fallen Informationen
-            wie Ihr Name, Adresse, Postanschrift, Telefonnummer, Email-Adresse.
+            wie Ihr Name, Adresse, Postanschrift, Telefonnummer, Email-Adresse.`}
             <br/>
             <br/>
-            Hinsichtlich Ihrer personenbezogenen Daten weisen wir darauf hin,
+           {` Hinsichtlich Ihrer personenbezogenen Daten weisen wir darauf hin,
             dass diese nach Maßgabe der anwendbaren Datenschutzbestimmungen
             gespeichert und/oder übertragen werden. Im Übrigen werden
             personenbezogene Daten absolut vertraulich behandelt und nur mit
@@ -108,7 +108,7 @@ function page() {
             vollständig gewährleistet werden kann. Wir wissen das Vertrauen zu
             schätzen, das Sie uns entgegenbringen, und wenden äußerste Sorgfalt
             an, um Ihre persönlichen Angaben zu schützen. Wenn Sie Fragen haben,
-            können Sie sich auch direkt an uns wenden.
+            können Sie sich auch direkt an uns wenden.`}
           </Typography>
         </div>
       </Container>
