@@ -28,7 +28,9 @@ function LeftSection() {
             {WebsiteData.name}
           </Typography>
           <Typography className="font-title text-start text-xs lg:text-sm">
-            {WebsiteData.address}
+          Humboldtstraße 9 <br/>
+          84453 Mühldorf am Inn
+            {/* {WebsiteData.address} */}
           </Typography>
         </div>
         <div className="py-2 pt-4 ">

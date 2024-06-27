@@ -27,6 +27,7 @@ interface IFormInput {
   telephone?: string;
   fax?: string;
   message: string;
+  document?: FileList;
 }
 
 // Validation schema
@@ -40,6 +41,7 @@ const validationSchema = Yup.object().shape({
   // telephone: Yup.string().required("Telephone is required"),
   // fax: Yup.string(), // Fax is optional
   message: Yup.string().required("Nachricht is required"),
+  // document: Yup.mixed().required("Document is required"), // Uncomment if the document is mandatory
 });
 
 const Page: React.FC = () => {
@@ -54,11 +56,34 @@ const Page: React.FC = () => {
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (recaptchaValue) {
-      console.log(data);
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("company", data.company);
+      formData.append("address", data.address);
+      formData.append("email", data.email);
+      formData.append("telephone", data.telephone || "");
+      formData.append("fax", data.fax || "");
+      formData.append("message", data.message);
+      if (data.document && data.document.length > 0) {
+        formData.append("document", data.document[0]);
+      }
+
       // Handle form submission (e.g., send the data to your backend)
-      setOpenDialog(true);
+      try {
+        const response = await fetch("/api/submit-form", {
+          method: "POST",
+          body: formData,
+        });
+        if (response.ok) {
+          setOpenDialog(true);
+        } else {
+          console.error("Form submission failed.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     } else {
       alert("Please complete the reCAPTCHA");
     }
@@ -75,7 +100,7 @@ const Page: React.FC = () => {
           variant="h4"
           className="font-bold text-start sm:text-center mb-4 text-2xl md:text-3xl capitalize"
         >
-          Contact Us
+          Kontakt
         </Typography>
 
         <Container maxWidth="sm" className="p-0">
@@ -197,8 +222,25 @@ const Page: React.FC = () => {
               />
             </Box>
             <Box mb={2}>
+              <Controller
+                name="document"
+                control={control}
+                render={({ field }) => (
+                  <div className="flex flex-row gap-6">
+                    <Typography>Bilder</Typography>
+                    <input
+                      {...field}
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={(e) => field.onChange(e.target.files)}
+                    />
+                  </div>
+                )}
+              />
+            </Box>
+            <Box mb={2}>
               <ReCAPTCHA
-                sitekey="YOUR_RECAPTCHA_SITE_KEY" 
+                sitekey="YOUR_RECAPTCHA_SITE_KEY"
                 onChange={(value) => setRecaptchaValue(value)}
               />
             </Box>

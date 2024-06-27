@@ -1,6 +1,6 @@
 const WEBSITEDATA={
   website_name: "Oliver Fargeon M.ENG",
-  name: "M.Eng.Olivier Fargeo",
+  name: "M.Eng.Olivier Fargeon",
   address: "Humboldtstraße 984453 Mühldorf am Inn",
   description: "Discription about Oliver Fargeon M.ENG",
   email: "info@fargeon-consulting.com",
