@@ -228,11 +228,11 @@ const Page: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-row gap-6">
                     <Typography>Bilder</Typography>
-                    <input
+                    <TextField
                       {...field}
                       type="file"
-                      accept=".pdf,.doc,.docx"
-                      onChange={(e) => field.onChange(e.target.files)}
+                      // accept=".pdf,.doc,.docx"
+                      onChange={(e:any) => field.onChange(e?.target?.files)}
                     />
                   </div>
                 )}
