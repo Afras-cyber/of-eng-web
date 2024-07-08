@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
-      <head>
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"></script>
-      </head>
+    
+  
       <body>
+        {/* <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"></script> */}
         <Header {...props} />
 
         <Container
