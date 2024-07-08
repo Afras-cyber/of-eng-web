@@ -95,6 +95,21 @@ const Page: React.FC = () => {
 
   return (
     <Theme>
+      {/* 6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5 */}
+      {/* <button class="g-recaptcha"
+    data-sitekey="6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"
+    data-callback='onSubmit'
+    data-action='submit'>
+  Submit
+</button> */}
+{/* {
+  "event": {
+    "token": "TOKEN",
+    "expectedAction": "USER_ACTION",
+    "siteKey": "6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5",
+  }
+} */}
+{/* https://recaptchaenterprise.googleapis.com/v1/projects/ofengineering-1720452961939/assessments?key=API_KEY */}
       <div className="p-1 sm:p-10">
         <Typography
           variant="h4"
@@ -240,7 +255,7 @@ const Page: React.FC = () => {
             </Box>
             <Box mb={2}>
               <ReCAPTCHA
-                sitekey="YOUR_RECAPTCHA_SITE_KEY"
+                sitekey="6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"
                 onChange={(value) => setRecaptchaValue(value)}
               />
             </Box>
