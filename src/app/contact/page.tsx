@@ -15,10 +15,9 @@ import {
   DialogContentText,
   DialogActions,
 } from "@mui/material";
-import ReCAPTCHA from "react-google-recaptcha";
 import Theme from "@/lib/Theme";
+import ReCAPTCHA from "react-google-recaptcha";
 
-// Define the form data type
 interface IFormInput {
   name: string;
   company: string;
@@ -30,7 +29,6 @@ interface IFormInput {
   document?: FileList;
 }
 
-// Validation schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   company: Yup.string().required("Firma is required"),
@@ -38,10 +36,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("E-Mail-Adresse is invalid")
     .required("E-Mail-Adresse is required"),
-  // telephone: Yup.string().required("Telephone is required"),
-  // fax: Yup.string(), // Fax is optional
   message: Yup.string().required("Nachricht is required"),
-  // document: Yup.mixed().required("Document is required"), // Uncomment if the document is mandatory
 });
 
 const Page: React.FC = () => {
@@ -57,24 +52,33 @@ const Page: React.FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    // const formData = new FormData();
+    // formData.append("name", data.name);
+    // formData.append("company", data.company);
+    // formData.append("address", data.address);
+    // formData.append("email", data.email);
+    // formData.append("telephone", data.telephone || "");
+    // formData.append("fax", data.fax || "");
+    // formData.append("message", data.message);
+    // if (data.document && data.document.length > 0) {
+    //   formData.append("document", data.document[0]);
+    // }
     if (recaptchaValue) {
-      const formData = new FormData();
-      formData.append("name", data.name);
-      formData.append("company", data.company);
-      formData.append("address", data.address);
-      formData.append("email", data.email);
-      formData.append("telephone", data.telephone || "");
-      formData.append("fax", data.fax || "");
-      formData.append("message", data.message);
-      if (data.document && data.document.length > 0) {
-        formData.append("document", data.document[0]);
-      }
+      const fromdata = {
+        name: data.name,
+        company: data.company,
+        address: data?.address,
+        email: data?.email,
+        telephone: data?.telephone || "",
+        fax: data?.fax || "",
+        message: data?.message,
+      };
+      console.log(JSON.stringify(fromdata, null, 2));
 
-      // Handle form submission (e.g., send the data to your backend)
       try {
         const response = await fetch("/api/submit-form", {
           method: "POST",
-          body: formData,
+          body: JSON.stringify(fromdata),
         });
         if (response.ok) {
           setOpenDialog(true);
@@ -95,21 +99,6 @@ const Page: React.FC = () => {
 
   return (
     <Theme>
-      {/* 6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5 */}
-      {/* <button class="g-recaptcha"
-    data-sitekey="6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"
-    data-callback='onSubmit'
-    data-action='submit'>
-  Submit
-</button> */}
-{/* {
-  "event": {
-    "token": "TOKEN",
-    "expectedAction": "USER_ACTION",
-    "siteKey": "6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5",
-  }
-} */}
-{/* https://recaptchaenterprise.googleapis.com/v1/projects/ofengineering-1720452961939/assessments?key=API_KEY */}
       <div className="p-1 sm:p-10">
         <Typography
           variant="h4"
@@ -246,8 +235,7 @@ const Page: React.FC = () => {
                     <TextField
                       {...field}
                       type="file"
-                      // accept=".pdf,.doc,.docx"
-                      onChange={(e:any) => field.onChange(e?.target?.files)}
+                      onChange={(e: any) => field.onChange(e?.target?.files)}
                     />
                   </div>
                 )}
@@ -255,7 +243,7 @@ const Page: React.FC = () => {
             </Box>
             <Box mb={2}>
               <ReCAPTCHA
-                sitekey="6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"
+                sitekey={"6LdwYAwqAAAAAOOVGxbzgJpr8NC2tLWBok3y5rNh"}
                 onChange={(value) => setRecaptchaValue(value)}
               />
             </Box>
