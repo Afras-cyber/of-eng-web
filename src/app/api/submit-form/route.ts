@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend("re_4npVbeNU_ALtpu8G3cJsXjswpUhVfd9zi");
+const resend = new Resend(process.env.RSEND_SECRET_KEY);
 
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
     console.log(JSON.stringify(body, null, 2));
-    const { name, company, address, email, telephone, fax, message } = body;
+    const { name, company, address, email, telephone, fax, message, documentUrl } = body;
 
     const emailContent = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
@@ -41,13 +41,18 @@ export const POST = async (req: NextRequest) => {
             <td style="padding: 8px; border: 1px solid #ddd;"><strong>Message:</strong></td>
             <td style="padding: 8px; border: 1px solid #ddd;">${message}</td>
           </tr>
+          ${documentUrl ? `
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Document:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><a href="${documentUrl}" target="_blank">View Document</a></td>
+          </tr>` : ""}
         </table>
       </div>
     `;
 
     const { data, error } = await resend.emails.send({
       from: "noreply <ofingconsult@resend.dev>",
-      to: [email], // Send email to the recipient's address
+      to: [email],
       subject: `${name} sent you a message`,
       html: emailContent,
     });

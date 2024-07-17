@@ -1,8 +1,9 @@
-"use client";
-import React, { useState } from "react";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+'use client';
+
+import React, { useState } from 'react';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import {
   Button,
   Container,
@@ -14,9 +15,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-} from "@mui/material";
-import Theme from "@/lib/Theme";
-import ReCAPTCHA from "react-google-recaptcha";
+} from '@mui/material';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Theme from '@/lib/Theme';
 
 interface IFormInput {
   name: string;
@@ -30,66 +31,65 @@ interface IFormInput {
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  company: Yup.string().required("Firma is required"),
-  address: Yup.string().required("Adresse is required"),
-  email: Yup.string()
-    .email("E-Mail-Adresse is invalid")
-    .required("E-Mail-Adresse is required"),
-  message: Yup.string().required("Nachricht is required"),
+  name: Yup.string().required('Name is required'),
+  company: Yup.string().required('Firma is required'),
+  address: Yup.string().required('Adresse is required'),
+  email: Yup.string().email('E-Mail-Adresse is invalid').required('E-Mail-Adresse is required'),
+  message: Yup.string().required('Nachricht is required'),
 });
 
-const Page: React.FC = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInput>({
+const ContactForm: React.FC = () => {
+  const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
 
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [uploadedFile,setUploadedFile] = useState<any>()
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    // const formData = new FormData();
-    // formData.append("name", data.name);
-    // formData.append("company", data.company);
-    // formData.append("address", data.address);
-    // formData.append("email", data.email);
-    // formData.append("telephone", data.telephone || "");
-    // formData.append("fax", data.fax || "");
-    // formData.append("message", data.message);
-    // if (data.document && data.document.length > 0) {
-    //   formData.append("document", data.document[0]);
-    // }
-    if (recaptchaValue) {
-      const fromdata = {
-        name: data.name,
-        company: data.company,
-        address: data?.address,
-        email: data?.email,
-        telephone: data?.telephone || "",
-        fax: data?.fax || "",
-        message: data?.message,
-      };
-      console.log(JSON.stringify(fromdata, null, 2));
-
+    if (!recaptchaValue) {
+      const formData = new FormData();
+      formData.append('file', uploadedFile);
+    
       try {
-        const response = await fetch("/api/submit-form", {
-          method: "POST",
-          body: JSON.stringify(fromdata),
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
         });
+
+        const result = await response.json();
         if (response.ok) {
-          setOpenDialog(true);
+        
+          const formData = {
+            name: data.name,
+            company: data.company,
+            address: data.address,
+            email: data.email,
+            telephone: data.telephone || "",
+            fax: data.fax || "",
+            message: data.message,
+            documentUrl:result.fileUrl,
+          };
+          console.log(JSON.stringify(formData,null,2))
+          // const emailResponse = await fetch('/api/submit-form', {
+          //   method: 'POST',
+          //   body: JSON.stringify(formData),
+          // });
+
+          // if (emailResponse.ok) {
+          //   setOpenDialog(true);
+          // } else {
+          //   console.error('Email submission failed.');
+          // }
         } else {
-          console.error("Form submission failed.");
+          console.error('File upload failed.');
         }
       } catch (error) {
-        console.error("Error submitting form:", error);
+        console.error('Error submitting form:', error);
       }
     } else {
-      alert("Please complete the reCAPTCHA");
+      alert('Please complete the reCAPTCHA');
     }
   };
 
@@ -120,7 +120,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.name}
-                    helperText={errors.name ? errors.name.message : ""}
+                    helperText={errors.name ? errors.name.message : ''}
                   />
                 )}
               />
@@ -136,7 +136,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.company}
-                    helperText={errors.company ? errors.company.message : ""}
+                    helperText={errors.company ? errors.company.message : ''}
                   />
                 )}
               />
@@ -152,7 +152,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.address}
-                    helperText={errors.address ? errors.address.message : ""}
+                    helperText={errors.address ? errors.address.message : ''}
                   />
                 )}
               />
@@ -168,7 +168,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.email}
-                    helperText={errors.email ? errors.email.message : ""}
+                    helperText={errors.email ? errors.email.message : ''}
                   />
                 )}
               />
@@ -184,9 +184,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.telephone}
-                    helperText={
-                      errors.telephone ? errors.telephone.message : ""
-                    }
+                    helperText={errors.telephone ? errors.telephone.message : ''}
                   />
                 )}
               />
@@ -202,7 +200,7 @@ const Page: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.fax}
-                    helperText={errors.fax ? errors.fax.message : ""}
+                    helperText={errors.fax ? errors.fax.message : ''}
                   />
                 )}
               />
@@ -220,7 +218,7 @@ const Page: React.FC = () => {
                     multiline
                     rows={4}
                     error={!!errors.message}
-                    helperText={errors.message ? errors.message.message : ""}
+                    helperText={errors.message ? errors.message.message : ''}
                   />
                 )}
               />
@@ -232,10 +230,11 @@ const Page: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-row gap-6">
                     <Typography>Bilder</Typography>
-                    <TextField
-                      {...field}
+                    <input
                       type="file"
-                      onChange={(e: any) => field.onChange(e?.target?.files)}
+                      onChange={(e:any) =>
+                        setUploadedFile(e.target.files[0])
+                      }
                     />
                   </div>
                 )}
@@ -243,7 +242,7 @@ const Page: React.FC = () => {
             </Box>
             <Box mb={2}>
               <ReCAPTCHA
-                sitekey={"6LdwYAwqAAAAAOOVGxbzgJpr8NC2tLWBok3y5rNh"}
+                sitekey="6LdwYAwqAAAAAOOVGxbzgJpr8NC2tLWBok3y5rNh"
                 onChange={(value) => setRecaptchaValue(value)}
               />
             </Box>
@@ -277,4 +276,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default ContactForm;

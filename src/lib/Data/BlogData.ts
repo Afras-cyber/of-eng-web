@@ -23,6 +23,9 @@ const BLODDATA = {
           item: `ahresbericht`,
         },
       ],
+      images: [
+    
+      ],
     },
     {
       title: "Altlastensanierung",
