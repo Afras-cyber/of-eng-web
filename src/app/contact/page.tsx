@@ -18,6 +18,8 @@ import {
 } from '@mui/material';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Theme from '@/lib/Theme';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { storage } from '@/lib/firebaseConfig'
 
 interface IFormInput {
   name: string;
@@ -45,22 +47,61 @@ const ContactForm: React.FC = () => {
 
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [uploadedFile,setUploadedFile] = useState<any>()
+  const [uploadedFile, setUploadedFile] = useState<any>()
+
+  const SendMail = async (formData: any) => {
+
+    const emailResponse = await fetch('/api/submit-form', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    });
+
+    if (emailResponse.ok) {
+      setOpenDialog(true);
+    } else {
+      console.error('Email submission failed.');
+    }
+
+  }
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    if (!recaptchaValue) {
-      const formData = new FormData();
-      formData.append('file', uploadedFile);
-    
-      try {
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
 
-        const result = await response.json();
-        if (response.ok) {
-        
+    if (!recaptchaValue) {
+      try {
+
+        if (uploadedFile) {
+          const storageRef = ref(storage, `emails/${uploadedFile.name}`);
+          const uploadTask = uploadBytesResumable(storageRef, uploadedFile);
+          await uploadTask.on('state_changed',
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log(progress);
+            },
+            (error) => {
+              console.error('Upload failed:', error);
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+
+                const formData = {
+                  name: data.name,
+                  company: data.company,
+                  address: data.address,
+                  email: data.email,
+                  telephone: data.telephone || "",
+                  fax: data.fax || "",
+                  message: data.message,
+                  documentUrl: downloadURL,
+                };
+                console.log(JSON.stringify(formData, null, 2))
+                SendMail(formData)
+              });
+
+            }
+          );
+
+
+        } else {
           const formData = {
             name: data.name,
             company: data.company,
@@ -69,22 +110,17 @@ const ContactForm: React.FC = () => {
             telephone: data.telephone || "",
             fax: data.fax || "",
             message: data.message,
-            documentUrl:result.fileUrl,
+            documentUrl: null,
           };
-          console.log(JSON.stringify(formData,null,2))
-          // const emailResponse = await fetch('/api/submit-form', {
-          //   method: 'POST',
-          //   body: JSON.stringify(formData),
-          // });
-
-          // if (emailResponse.ok) {
-          //   setOpenDialog(true);
-          // } else {
-          //   console.error('Email submission failed.');
-          // }
-        } else {
-          console.error('File upload failed.');
+          console.log(JSON.stringify(formData, null, 2))
+          SendMail(formData)
         }
+
+
+
+
+
+
       } catch (error) {
         console.error('Error submitting form:', error);
       }
@@ -232,7 +268,7 @@ const ContactForm: React.FC = () => {
                     <Typography>Bilder</Typography>
                     <input
                       type="file"
-                      onChange={(e:any) =>
+                      onChange={(e: any) =>
                         setUploadedFile(e.target.files[0])
                       }
                     />
