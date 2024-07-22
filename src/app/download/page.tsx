@@ -8,17 +8,17 @@ function page() {
     {
       title: `Anlage 1.1 Unternehmensbezogene Anzeige zu Tätigkeiten mit asbesthaltigen Materialien`,
       subtitle: `(gemäß Anhang I Nr. 2.4.2 GefStoffV und Nummer 3.2 TRGS 519) – Microsoft Word`,
-      path: "/pdf/TRGS-519-Anlage-1-1.doc",
+      path: "/word/TRGS-519-Anlage-1-1.doc",
     },
     {
       title: `Anlage 1.2 Ergänzende Anzeige von Ort und Zeit zur unternehmensbezogenen Anzeige für Tätigkeiten geringen Umfangs mit asbesthaltigen Materialien`,
       subtitle: `(gemäß Anhang I Nr. 2.4.2 GefStoffV und Nummer 3.2 TRGS 519) – Microsoft Word`,
-      path: "/pdf/TRGS-519-Anlage-1-2.doc",
+      path: "/word/TRGS-519-Anlage-1-2.doc",
     },
     {
       title: `Anlage 1.3 Objektbezogene Anzeige zu Tätigkeiten mit asbesthaltigen  Materialien`,
       subtitle: `(gemäß Anhang I Nr. 2.4.2 GefStoffV und Nummer 3.2 TRGS 519) – Microsoft Word`,
-      path: "/pdf/TRGS-519-Anlage-1-3.doc",
+      path: "/word/TRGS-519-Anlage-1-3.doc",
     },
   ];
   const CertificateComponents = ({
