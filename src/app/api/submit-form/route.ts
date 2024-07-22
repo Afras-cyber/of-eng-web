@@ -1,13 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RSEND_SECRET_KEY);
+// Create a Nodemailer transporter using SMTP transport
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  // port: "587", 
+  secure: process.env.SMTP_SECURE === 'true', // Convert string to boolean
+  auth: {
+    user: "",
+    pass: "",
+  },
+});
 
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
     console.log(JSON.stringify(body, null, 2));
-    const { name, company, address, email, telephone, fax, message, documentUrl } = body;
+    const {
+      name,
+      company,
+      address,
+      email,
+      telephone,
+      fax,
+      message,
+      documentUrl,
+    } = body;
 
     const emailContent = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
@@ -41,31 +59,36 @@ export const POST = async (req: NextRequest) => {
             <td style="padding: 8px; border: 1px solid #ddd;"><strong>Message:</strong></td>
             <td style="padding: 8px; border: 1px solid #ddd;">${message}</td>
           </tr>
-          ${documentUrl ? `
+          ${
+            documentUrl
+              ? `
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd;"><strong>Document:</strong></td>
             <td style="padding: 8px; border: 1px solid #ddd;"><a href="${documentUrl}" target="_blank">View Document</a></td>
-          </tr>` : ""}
+          </tr>`
+              : ''
+          }
         </table>
       </div>
     `;
 
-    const { data, error } = await resend.emails.send({
-      from: "noreply <ofingconsult@resend.dev>",
-      to: [email],
+    const emailOptions = {
+      from: 'noreply@yourdomain.com',
+      to: email,
       subject: `${name} sent you a message`,
       html: emailContent,
-    });
+      attachments: documentUrl ? [{ path: documentUrl }] : [],
+    };
 
-    if (error) {
-      return NextResponse.json({ error }, { status: 500 });
-    }
+    // Send email with Nodemailer
+    const info = await transporter.sendMail(emailOptions);
+
     return new NextResponse(
-      JSON.stringify({ message: "Email sent successfully", data }),
+      JSON.stringify({ message: 'Email sent successfully', info }),
       { status: 200 }
     );
   } catch (error: any) {
-    return new NextResponse("Send email error: " + error.message, {
+    return new NextResponse('Send email error: ' + error.message, {
       status: 500,
     });
   }

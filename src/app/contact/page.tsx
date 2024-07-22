@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import {
   Button,
   Container,
@@ -15,11 +15,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-} from '@mui/material';
-import ReCAPTCHA from 'react-google-recaptcha';
-import Theme from '@/lib/Theme';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '@/lib/firebaseConfig'
+} from "@mui/material";
+import ReCAPTCHA from "react-google-recaptcha";
+import Theme from "@/lib/Theme";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "@/lib/firebaseConfig";
 
 interface IFormInput {
   name: string;
@@ -33,56 +33,61 @@ interface IFormInput {
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  company: Yup.string().required('Firma is required'),
-  address: Yup.string().required('Adresse is required'),
-  email: Yup.string().email('E-Mail-Adresse is invalid').required('E-Mail-Adresse is required'),
-  message: Yup.string().required('Nachricht is required'),
+  name: Yup.string().required("Name is required"),
+  company: Yup.string().required("Firma is required"),
+  address: Yup.string().required("Adresse is required"),
+  email: Yup.string()
+    .email("E-Mail-Adresse is invalid")
+    .required("E-Mail-Adresse is required"),
+  message: Yup.string().required("Nachricht is required"),
 });
 
 const ContactForm: React.FC = () => {
-  const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
 
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [uploadedFile, setUploadedFile] = useState<any>()
+  const [uploadedFile, setUploadedFile] = useState<any>();
 
   const SendMail = async (formData: any) => {
-
-    const emailResponse = await fetch('/api/submit-form', {
-      method: 'POST',
+    const emailResponse = await fetch("/api/submit-form", {
+      method: "POST",
       body: JSON.stringify(formData),
     });
 
     if (emailResponse.ok) {
       setOpenDialog(true);
+     
     } else {
-      console.error('Email submission failed.');
+      console.error("Email submission failed.");
     }
-
-  }
+  };
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-
-    if (!recaptchaValue) {
+    // if (!recaptchaValue) {
       try {
-
         if (uploadedFile) {
           const storageRef = ref(storage, `emails/${uploadedFile.name}`);
           const uploadTask = uploadBytesResumable(storageRef, uploadedFile);
-          await uploadTask.on('state_changed',
+          await uploadTask.on(
+            "state_changed",
             (snapshot) => {
-              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
               console.log(progress);
             },
             (error) => {
-              console.error('Upload failed:', error);
+              console.error("Upload failed:", error);
             },
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-
                 const formData = {
                   name: data.name,
                   company: data.company,
@@ -93,14 +98,11 @@ const ContactForm: React.FC = () => {
                   message: data.message,
                   documentUrl: downloadURL,
                 };
-                console.log(JSON.stringify(formData, null, 2))
-                SendMail(formData)
+                console.log(JSON.stringify(formData, null, 2));
+                SendMail(formData);
               });
-
             }
           );
-
-
         } else {
           const formData = {
             name: data.name,
@@ -112,25 +114,21 @@ const ContactForm: React.FC = () => {
             message: data.message,
             documentUrl: null,
           };
-          console.log(JSON.stringify(formData, null, 2))
-          SendMail(formData)
+          console.log(JSON.stringify(formData, null, 2));
+          SendMail(formData);
         }
-
-
-
-
-
-
       } catch (error) {
-        console.error('Error submitting form:', error);
+        console.error("Error submitting form:", error);
       }
-    } else {
-      alert('Please complete the reCAPTCHA');
-    }
+    // } else {
+    //   alert("Please complete the reCAPTCHA");
+    // }
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
+    reset(); // Clear the form
+    window.location.reload();
   };
 
   return (
@@ -156,7 +154,7 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.name}
-                    helperText={errors.name ? errors.name.message : ''}
+                    helperText={errors.name ? errors.name.message : ""}
                   />
                 )}
               />
@@ -172,7 +170,7 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.company}
-                    helperText={errors.company ? errors.company.message : ''}
+                    helperText={errors.company ? errors.company.message : ""}
                   />
                 )}
               />
@@ -188,7 +186,7 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.address}
-                    helperText={errors.address ? errors.address.message : ''}
+                    helperText={errors.address ? errors.address.message : ""}
                   />
                 )}
               />
@@ -204,7 +202,7 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.email}
-                    helperText={errors.email ? errors.email.message : ''}
+                    helperText={errors.email ? errors.email.message : ""}
                   />
                 )}
               />
@@ -220,7 +218,9 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.telephone}
-                    helperText={errors.telephone ? errors.telephone.message : ''}
+                    helperText={
+                      errors.telephone ? errors.telephone.message : ""
+                    }
                   />
                 )}
               />
@@ -236,7 +236,7 @@ const ContactForm: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     error={!!errors.fax}
-                    helperText={errors.fax ? errors.fax.message : ''}
+                    helperText={errors.fax ? errors.fax.message : ""}
                   />
                 )}
               />
@@ -254,7 +254,7 @@ const ContactForm: React.FC = () => {
                     multiline
                     rows={4}
                     error={!!errors.message}
-                    helperText={errors.message ? errors.message.message : ''}
+                    helperText={errors.message ? errors.message.message : ""}
                   />
                 )}
               />
@@ -268,9 +268,7 @@ const ContactForm: React.FC = () => {
                     <Typography>Bilder</Typography>
                     <input
                       type="file"
-                      onChange={(e: any) =>
-                        setUploadedFile(e.target.files[0])
-                      }
+                      onChange={(e: any) => setUploadedFile(e.target.files[0])}
                     />
                   </div>
                 )}
