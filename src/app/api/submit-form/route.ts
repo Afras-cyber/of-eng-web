@@ -3,12 +3,13 @@ import nodemailer from "nodemailer";
 
 // Create a Nodemailer transporter using SMTP transport
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp.resend.com",
+  port:587,
   // port: "587", 
   secure: process.env.SMTP_SECURE === 'true', // Convert string to boolean
   auth: {
-    user: "",
-    pass: "",
+    user: "resend",
+    pass: "re_4npVbeNU_ALtpu8G3cJsXjswpUhVfd9zi",
   },
 });
 
@@ -73,7 +74,7 @@ export const POST = async (req: NextRequest) => {
     `;
 
     const emailOptions = {
-      from: 'noreply@yourdomain.com',
+      from: 'noreply@of-ingconsult.com',
       to: email,
       subject: `${name} sent you a message`,
       html: emailContent,

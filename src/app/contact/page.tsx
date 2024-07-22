@@ -15,6 +15,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
+  CircularProgress,
+  Backdrop,
 } from "@mui/material";
 import ReCAPTCHA from "react-google-recaptcha";
 import Theme from "@/lib/Theme";
@@ -55,28 +57,35 @@ const ContactForm: React.FC = () => {
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<any>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
   const SendMail = async (formData: any) => {
+    setIsLoading(true);
     const emailResponse = await fetch("/api/submit-form", {
       method: "POST",
       body: JSON.stringify(formData),
     });
 
     if (emailResponse.ok) {
+      setIsLoading(false);
+      setIsSuccess(true);
       setOpenDialog(true);
-     
     } else {
-      console.error("Email submission failed.");
+      setIsLoading(false);
+      setIsSuccess(false);
+      setOpenDialog(true);
     }
   };
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    // if (!recaptchaValue) {
+    if (recaptchaValue) {
       try {
+        setIsLoading(true);
         if (uploadedFile) {
           const storageRef = ref(storage, `emails/${uploadedFile.name}`);
           const uploadTask = uploadBytesResumable(storageRef, uploadedFile);
-          await uploadTask.on(
+          uploadTask.on(
             "state_changed",
             (snapshot) => {
               const progress =
@@ -85,6 +94,9 @@ const ContactForm: React.FC = () => {
             },
             (error) => {
               console.error("Upload failed:", error);
+              setIsLoading(false);
+              setIsSuccess(false);
+              setOpenDialog(true);
             },
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -119,16 +131,21 @@ const ContactForm: React.FC = () => {
         }
       } catch (error) {
         console.error("Error submitting form:", error);
+        setIsLoading(false);
+        setIsSuccess(false);
+        setOpenDialog(true);
       }
-    // } else {
-    //   alert("Please complete the reCAPTCHA");
-    // }
+    } else {
+      alert("Please complete the reCAPTCHA");
+    }
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    reset(); // Clear the form
-    window.location.reload();
+    if (isSuccess) {
+      reset();
+      window.location.reload();
+    }
   };
 
   return (
@@ -293,10 +310,12 @@ const ContactForm: React.FC = () => {
         </Container>
 
         <Dialog open={openDialog} onClose={handleCloseDialog}>
-          <DialogTitle>Success</DialogTitle>
+          <DialogTitle>{isSuccess ? "Success" : "Failure"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Your message has been successfully sent.
+              {isSuccess
+                ? "Your message has been successfully sent."
+                : "There was an error sending your message. Please try again."}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -305,6 +324,10 @@ const ContactForm: React.FC = () => {
             </Button>
           </DialogActions>
         </Dialog>
+
+        <Backdrop open={isLoading} style={{ zIndex: 9999 }}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
       </div>
     </Theme>
   );
