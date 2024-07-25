@@ -4,6 +4,7 @@ import { BlogDataProps } from "@/typedef";
 import Link from "next/link";
 import { Container, Typography } from "@mui/material";
 export default function Home() {
+  
   const Card = ({ item }: { item: BlogDataProps }) => {
     return (
       <Link href={`/blog/${item.slug}`}>
