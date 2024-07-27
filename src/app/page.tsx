@@ -36,7 +36,7 @@ export default function Home() {
           variant="h6"
           className="font-title font-extrabold text-center sm:text-start"
         >
-          Geschäftsfelder
+        {`Geschäftsfelder`}
         </Typography>
         <div className="py-5">
           <div className=" grid grid-row-1 l sm:grid-cols-2 sm:grid-flow-row gap-3">

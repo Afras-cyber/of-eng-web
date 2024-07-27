@@ -5,7 +5,9 @@ import React from "react";
 function Gallery({ Images }: { Images: string[] }) {
   return (
     <div>
+      {/*  */}
       <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row gap-5 ">
+        
         {Images?.map((img,index) => (
           <Image
           key={index}
