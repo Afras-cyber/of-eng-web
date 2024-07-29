@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import LeftSection from "@/components/LeftSection";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,13 +16,21 @@ interface Props {
 export const metadata: Metadata = {
   title: "Olivier Fargeon M.ENG",
   description: `Discription about Olivier Fargeon M.ENG`,
+  authors: {
+    name: "Olivier Fargeon M.ENG",
+  },
+  publisher: "DMT - Dev Multi Tech",
+  keywords: [
+    "DMT",
+    "Dev Multi Tech",
+    "Olivier Fargeon M.ENG",
+    "Olivier Fargeon",
+  ],
 };
 
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
-    
-  
       <body>
         {/* <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeJ9woqAAAAAPnUAFxP90N-giYSEZxrOvD51xf5"></script> */}
         <Header {...props} />
@@ -34,10 +42,13 @@ export default function RootLayout(props: Props) {
             boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px;",
           }}
         >
+          <Typography variant="body1" className="font-bold text-right w-full py-3 text-orange-500">
+          Address changed - Humboldtstraße 984453 Mühldorf am Inn
+          </Typography>
           <div className="w-full flex flex-col lg:flex-row">
             <LeftSection />
             <Suspense fallback={<Loading />}>
-              <div className="m-auto w-full lg:w-9/12 xl:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12">
+              <div className="m-auto w-full lg:w-9/12 xl:w-10/12 bg-white rounded p-3 min-h-[80vh] mb-12 pb-10">
                 {props.children}
               </div>
             </Suspense>
