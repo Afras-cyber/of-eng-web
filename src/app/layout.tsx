@@ -14,8 +14,8 @@ interface Props {
   children: React.ReactElement;
 }
 export const metadata: Metadata = {
-  title: "Oliver Fargeon M.ENG",
-  description: `Discription about Oliver Fargeon M.ENG`,
+  title: "Olivier Fargeon M.ENG",
+  description: `Discription about Olivier Fargeon M.ENG`,
 };
 
 export default function RootLayout(props: Props) {

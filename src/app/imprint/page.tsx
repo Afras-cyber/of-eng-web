@@ -73,7 +73,7 @@ function page() {
           variant="body1"
           className="px-2 my-3 font-title"
         >
-          Steuernummer: 141/216/20929
+         Ust-IdNr.: DE364189355
         </Typography>
         <div className="mb-6">
           <Typography className="font-bold" variant="body1">
