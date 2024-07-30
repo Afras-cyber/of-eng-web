@@ -15,7 +15,7 @@ interface Props {
 }
 export const metadata: Metadata = {
   title: "Olivier Fargeon M.ENG",
-  description: `Discription about Olivier Fargeon M.ENG`,
+  description: `Description about Olivier Fargeon M.ENG`,
   authors: {
     name: "Olivier Fargeon M.ENG",
   },
@@ -25,9 +25,52 @@ export const metadata: Metadata = {
     "Dev Multi Tech",
     "Olivier Fargeon M.ENG",
     "Olivier Fargeon",
+    "Chemieingenieurwesen",
+    "Chemische Technik",
+    "Ingenieur für Chemie",
+    "Chemieingenieur",
+    "Prozessingenieur",
+    "Anlagenbau",
+    "Verfahrenstechnik",
+    "Chemische Verfahren",
+    "Forschung und Entwicklung Chemie",
+    "Chemische Produktion",
+    "Industrielle Chemie",
+    "Chemische Anlagen",
+    "Reaktionsengineering",
+    "Katalyse",
+    "Chemische Prozessoptimierung",
+    "Chemische Sicherheit",
+    "Laborarbeit Chemie",
+    "Chemische Simulationen",
+    "Chemische Prozesse",
+    "Umweltingenieurwesen Chemie",
   ],
-};
+  openGraph: {
+    type: "website",
+     
+    title: "Olivier Fargeon M.ENG",
+    description: "Description about Olivier Fargeon M.ENG",
+    images: [
+      {
+        url: "https://of-ingconsult.com/_next/image?url=%2Fprofile.png&w=640&q=75",
+        width: 800,
+        height: 600,
+        alt: "Olivier Fargeon",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@OFargeon",
+    title: "Olivier Fargeon",
+    description: "Description about Olivier Fargeon M.ENG",
+    images: ["https://x.com/OFargeon/photo"],
+  },
+  viewport: "width=device-width, initial-scale=1",
 
+  robots: "index, follow",
+};
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
@@ -42,8 +85,11 @@ export default function RootLayout(props: Props) {
             boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px;",
           }}
         >
-          <Typography variant="body1" className="font-bold text-right w-full py-3 text-orange-500">
-          Address changed - Humboldtstraße 984453 Mühldorf am Inn
+          <Typography
+            variant="body1"
+            className="font-bold text-right w-full py-3 text-orange-500"
+          >
+            Address changed - Humboldtstraße 984453 Mühldorf am Inn
           </Typography>
           <div className="w-full flex flex-col lg:flex-row">
             <LeftSection />
