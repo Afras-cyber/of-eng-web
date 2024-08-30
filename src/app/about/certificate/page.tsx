@@ -6,6 +6,10 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 function page() {
   const content = [
     {
+      title: `Probenehmer-Zertifikatslehrgang – Anforderungen an die Probenahme im gesetzlich geregelten Umweltbereich`,
+      path: `/pdf/z1.pdf`,
+    },
+    {
       title: `Fachkraft für Boden- und Gebäudeschadstoffe - Umgang mit Abfällen auf Baustellen`,
       path: `/pdf/Fachkraft.pdf`,
     },

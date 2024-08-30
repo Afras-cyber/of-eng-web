@@ -5,6 +5,10 @@ import { Container, Typography } from "@mui/material";
 function page() {
   const content = [
     {
+      date: "07.2024",
+      content: `Probenehmer-Zertifikatslehrgang – Anforderungen an die Probenahme im gesetzlich geregelten Umweltbereich`,
+    },
+    {
       date: "05.2024",
       content: `Fachkraft für Boden- und Gebäudeschadstoffe – Umgang mit Abfälle auf Baustellen, Umweltinstitut Offenbach GmbH`,
     },

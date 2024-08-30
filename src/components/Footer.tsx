@@ -9,6 +9,50 @@ import QuickLinksData from "@/lib/Data/QuickLinksData";
 import { Container, Typography } from "@mui/material";
 import { FaLinkedin } from "react-icons/fa";
 function Footer() {
+
+const Social = ()=>(  <>
+  <li>
+  {/* <Link
+    href="https://www.facebook.com/jenshenningmueller/"
+    target="_blank"
+  > */}
+    <FaSquareFacebook className="text-3xl text-primary" />
+  {/* </Link> */}
+</li>
+<li>
+  {/* <Link
+    href="https://www.facebook.com/jenshenningmueller/"
+    target="_blank"
+  > */}
+    <FaSquareInstagram className="text-3xl text-primary" />
+  {/* </Link> */}
+</li>
+<li>
+  {/* <Link
+    href="https://www.facebook.com/jenshenningmueller/"
+    target="_blank"
+  > */}
+    <FaSquareYoutube className="text-3xl text-primary" />
+  {/* </Link> */}
+</li>
+<li>
+  {/* <Link
+    href="https://www.facebook.com/jenshenningmueller/"
+    target="_blank"
+  > */}
+    <FaSquareXTwitter className="text-3xl text-primary" />
+  {/* </Link> */}
+</li>
+<li>
+  {/* <Link
+    href="https://www.facebook.com/jenshenningmueller/"
+    target="_blank"
+  > */}
+    <FaSquarePinterest className="text-3xl text-primary" />
+  {/* </Link> */}
+</li>
+</>      
+)
   return (
     <Container maxWidth="lg" className="px-0">
       <div className="py-8 ">
@@ -21,55 +65,28 @@ function Footer() {
             className="w-8/12 sm:w-[18vw] md:w-[26vw] lg:w-[14vw] my-2"
           />
           <ul className="flex space-x-1">
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
+              <li>
+              <Link
+                href="https://wa.me/message/YIAZ4BDZTLILI1"
                 target="_blank"
-              > */}
-                <FaSquareFacebook className="text-3xl text-primary" />
-              {/* </Link> */}
-            </li>
-            <li>
-              <FaSquareWhatsapp className="text-3xl text-primary" />
-            </li>
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
+              >
+                <FaSquareWhatsapp className="text-3xl text-primary" />
+                </Link>
+              </li>
+              <li>
+              <Link
+                href="http://www.linkedin.com/in/olivier-fargeon"
                 target="_blank"
-              > */}
-                <FaSquareInstagram className="text-3xl text-primary" />
-              {/* </Link> */}
-            </li>
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
-                target="_blank"
-              > */}
-                <FaSquareYoutube className="text-3xl text-primary" />
-              {/* </Link> */}
-            </li>
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
-                target="_blank"
-              > */}
-                <FaSquareXTwitter className="text-3xl text-primary" />
-              {/* </Link> */}
-            </li>
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
-                target="_blank"
-              > */}
-                <FaSquarePinterest className="text-3xl text-primary" />
-              {/* </Link> */}
-            </li>
-            <li>
-              {/* <Link
-                href="https://www.facebook.com/jenshenningmueller/"
-                target="_blank"
-              > */}
+              >
                 <FaLinkedin className="text-3xl text-primary" />
+              </Link>
+            </li>
+            <li>
+              {/* <Link
+                href="http://www.linkedin.com/in/olivier-fargeon"
+                target="_blank"
+              > */}
+                <Image src="/xing.png"width={80} height={60} className="object-fit" alt="xing"/>
               {/* </Link> */}
             </li>
             

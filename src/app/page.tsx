@@ -17,7 +17,7 @@ export default function Home() {
       <Link href={`/blog/${item.slug}`}>
         <div className="flex flex-col sm:flex-row  rounded-lg border-[2px] border-gray-300 hover:opacity-[0.5] cursor-pointer shadow-lg hover:scale-105 transform duration-400">
           <Image
-            src={item?.images.length == 0 ? "/externer.jpeg" : item?.images[1]}
+            src={item?.cover}
             width={120}
             height={120}
             alt="card image"
@@ -34,7 +34,7 @@ export default function Home() {
   };
   return (
     <main className=" ">
-      <Container className="grid grid-flow-row grid-cols-1 sm:grid-cols-2">
+      <Container className="grid grid-flow-row grid-cols-1 ">
         <Typography component="div">
           <Typography
             variant="h6"
@@ -50,7 +50,7 @@ export default function Home() {
             </div>
           </div>
         </Typography>
-        <Typography
+        {/* <Typography
           component="div"
           className="border-[1px] w-full sm:m-3 rounded-lg h-full px-2 py-3"
         >
@@ -68,7 +68,7 @@ export default function Home() {
               </ListItemButton>
             ))}
           </List>
-        </Typography>
+        </Typography> */}
       </Container>
     </main>
   );

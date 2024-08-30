@@ -38,14 +38,14 @@ function Header(props: Props) {
       path: "/about",
       title: "Person",
     },
-    {
-      path: "/project",
-      title: "Projekte",
-    },
-    {
-      path: "/download",
-      title: "Downloads",
-    },
+    // {
+    //   path: "/project",
+    //   title: "Projekte",
+    // },
+    // {
+    //   path: "/download",
+    //   title: "Downloads",
+    // },
     {
       path: "/partner",
       title: "Partner",

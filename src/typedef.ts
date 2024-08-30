@@ -3,4 +3,5 @@ export interface BlogDataProps {
     slug:string,
     content:{item:string}[]
     images:string[]
+    cover:string
 }

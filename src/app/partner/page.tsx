@@ -24,11 +24,14 @@ function page() {
           </Typography> */}
         </div>
 
-        <section>
-          <Typography variant="body1" className="text-xl  text-start mb-4">
+        <section className="flex justify-center flex-col items-center">
+          <Typography variant="body1" className="text-xl  text-start mb-4 ">
             GBA Analytical Services GmbH{" "}
-            <Link target="_blank" className="text-primary mx-3  font-semibold " href="https://www.gba-group.com/environment/standorte/vaterstetten/">View the page</Link>
+            {/* <Link target="_blank" className="text-primary mx-3  font-semibold " href="https://www.gba-group.com/environment/standorte/vaterstetten/">View the page</Link> */}
           </Typography>
+          <iframe src="https://www.gba-group.com/environment/standorte/vaterstetten/" className="w-[90%] h-[100vh] border-[3px]  ">
+
+          </iframe>
         </section>
       </Container>
     </Theme>

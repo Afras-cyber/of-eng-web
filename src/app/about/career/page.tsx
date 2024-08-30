@@ -26,7 +26,7 @@ function page() {
               {`Seit 01.10.2020`}
             </Typography>
             <Typography variant="subtitle1" className="pl-5 sm:pl-10">
-              {` Betriebsbeauftragter für Abfall, Gewässerschutz und Altlasten bei der BayernChemie Gesellschaft für flugchemische Antriebe mbH`}
+              {` Betriebsbeauftragter für Abfall, Gewässerschutz und Altlasten bei der Bayern-Chemie Gesellschaft für flugchemische Antriebe mbH`}
             </Typography>
           </div>
           <div className="mb-5">
