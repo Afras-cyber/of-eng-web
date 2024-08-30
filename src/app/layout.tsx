@@ -14,16 +14,16 @@ interface Props {
   children: React.ReactElement;
 }
 export const metadata: Metadata = {
-  title: "Olivier Fargeon M.ENG",
-  description: `Description about Olivier Fargeon M.ENG`,
+  title: "Olivier Fargeon M. ENG",
+  description: `Description about Olivier Fargeon M. ENG`,
   authors: {
-    name: "Olivier Fargeon M.ENG",
+    name: "Olivier Fargeon M. ENG",
   },
   publisher: "DMT - Dev Multi Tech",
   keywords: [
     "DMT",
     "Dev Multi Tech",
-    "Olivier Fargeon M.ENG",
+    "Olivier Fargeon M. ENG",
     "Olivier Fargeon",
     "Chemieingenieurwesen",
     "Chemische Technik",
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
      
-    title: "Olivier Fargeon M.ENG",
-    description: "Description about Olivier Fargeon M.ENG",
+    title: "Olivier Fargeon M. ENG",
+    description: "Description about Olivier Fargeon M. ENG",
     images: [
       {
         url: "https://of-ingconsult.com/_next/image?url=%2Fprofile.png&w=640&q=75",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@OFargeon",
     title: "Olivier Fargeon",
-    description: "Description about Olivier Fargeon M.ENG",
+    description: "Description about Olivier Fargeon M. ENG",
     images: ["https://x.com/OFargeon/photo"],
   },
   viewport: "width=device-width, initial-scale=1",

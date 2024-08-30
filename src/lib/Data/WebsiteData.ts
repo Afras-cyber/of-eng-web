@@ -1,8 +1,8 @@
 const WEBSITEDATA={
-  website_name: "Olivier Fargeon M.ENG",
-  name: "M.Eng. Olivier Fargeon",
+  website_name: "Olivier Fargeon M. ENG",
+  name: "M. Eng. Olivier Fargeon",
   address: "Humboldtstraße 9, 84453 Mühldorf am Inn",
-  description: "Discription about Olivier Fargeon M.ENG",
+  description: "Discription about Olivier Fargeon M. ENG",
   email: "info@of-ingconsult.com",
   //||"info@fargeon-consulting.com",
   mobile: "+49 8631 1849439",

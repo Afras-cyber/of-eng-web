@@ -35,13 +35,13 @@ interface IFormInput {
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  company: Yup.string().required("Firma is required"),
-  address: Yup.string().required("Adresse is required"),
+  name: Yup.string().required("Name ist erforderlich"),
+  company: Yup.string().required("Firma ist erforderlich"),
+  address: Yup.string().required("Adresse ist erforderlich"),
   email: Yup.string()
-    .email("E-Mail-Adresse is invalid")
-    .required("E-Mail-Adresse is required"),
-  message: Yup.string().required("Nachricht is required"),
+    .email("E-Mail-Adresse ist ungültig")
+    .required("E-Mail-Adresse ist erforderlich"),
+  message: Yup.string().required("Nachricht ist erforderlich"),
 });
 
 const ContactForm: React.FC = () => {
@@ -136,7 +136,7 @@ const ContactForm: React.FC = () => {
         setOpenDialog(true);
       }
     } else {
-      alert("Please complete the reCAPTCHA");
+      alert("Bitte füllen Sie das reCAPTCHA aus");
     }
   };
 
@@ -304,13 +304,13 @@ const ContactForm: React.FC = () => {
               fullWidth
               className="py-2"
             >
-              Submit
+              Einreichen
             </Button>
           </form>
         </Container>
 
         <Dialog open={openDialog} onClose={handleCloseDialog}>
-          <DialogTitle>{isSuccess ? "Success" : "Failure"}</DialogTitle>
+          <DialogTitle>{isSuccess ? "Erfolg" : "Versagen"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               {isSuccess
@@ -320,7 +320,7 @@ const ContactForm: React.FC = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseDialog} color="primary">
-              Close
+            Schließen
             </Button>
           </DialogActions>
         </Dialog>
