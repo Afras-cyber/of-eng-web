@@ -314,8 +314,8 @@ const ContactForm: React.FC = () => {
           <DialogContent>
             <DialogContentText>
               {isSuccess
-                ? "Your message has been successfully sent."
-                : "There was an error sending your message. Please try again."}
+                ? "Ihre Nachricht wurde erfolgreich gesendet."
+                : "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."}
             </DialogContentText>
           </DialogContent>
           <DialogActions>

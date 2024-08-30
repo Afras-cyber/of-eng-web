@@ -9,7 +9,8 @@ const transporter = nodemailer.createTransport({
   secure: process.env.SMTP_SECURE === 'true', // Convert string to boolean
   auth: {
     user: "resend",
-    pass: "re_4npVbeNU_ALtpu8G3cJsXjswpUhVfd9zi",
+    pass: "re_cWZDu3FY_AxE1ZRrCvjWqEe28ohws73mx",
+    
   },
 });
 
@@ -75,7 +76,8 @@ export const POST = async (req: NextRequest) => {
 
     const emailOptions = {
       from: 'noreply@of-ingconsult.com',
-      to: email,
+      to: ["info@of-consult.com","info@fargeon-consulting.com"],
+      
       subject: `${name} sent you a message`,
       html: emailContent,
       attachments: documentUrl ? [{ path: documentUrl }] : [],
@@ -85,7 +87,7 @@ export const POST = async (req: NextRequest) => {
     const info = await transporter.sendMail(emailOptions);
 
     return new NextResponse(
-      JSON.stringify({ message: 'Email sent successfully', info }),
+      JSON.stringify({ message: 'E-mail succesvol verzonden', info }),
       { status: 200 }
     );
   } catch (error: any) {
