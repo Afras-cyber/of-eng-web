@@ -76,7 +76,7 @@ export const POST = async (req: NextRequest) => {
 
     const emailOptions = {
       from: 'noreply@of-ingconsult.com',
-      to: ["info@of-consult.com","info@fargeon-consulting.com"],
+      to: ["info@of-ingconsult.com","olivierfargeon@gmail.com"],
       
       subject: `${name} sent you a message`,
       html: emailContent,

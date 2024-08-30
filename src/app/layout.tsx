@@ -89,7 +89,7 @@ export default function RootLayout(props: Props) {
             variant="body1"
             className="font-bold text-right w-full py-3 text-orange-500"
           >
-            Address changed -Humboldtstraße 9, 84453 Mühldorf am Inn
+         Neue Anschrift: Humboldtstraße 9, 84453 Mühldorf am Inn
           </Typography>
           <div className="w-full flex flex-col lg:flex-row">
             <LeftSection />
