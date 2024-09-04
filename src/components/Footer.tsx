@@ -82,12 +82,15 @@ const Social = ()=>(  <>
               </Link>
             </li>
             <li>
-              {/* <Link
-                href="http://www.linkedin.com/in/olivier-fargeon"
+              <Link
+                href="https://www.xing.com/profile/Olivier_Fargeon/web_profiles?sc_o=navigation_profile&sc_o_PropActionOrigin=navigation_neffi_100&expandNeffi=true"
                 target="_blank"
-              > */}
-                <Image src="/xing.png"width={80} height={60} className="object-fit" alt="xing"/>
-              {/* </Link> */}
+              >
+                <Image src="/xing.png"width={80} height={60} className="object-fit" alt="xing"
+               
+                
+                />
+              </Link>
             </li>
             
           </ul>
